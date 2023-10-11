@@ -1,0 +1,14 @@
+# Configuración de U-Boot
+setenv kernel_addr_r 0x00008000
+
+# Dirección de la imagen del kernel
+setenv bootfile imgs/kernel7.img
+
+# Configuración del teclado
+setenv stdin serial,usbkbd
+
+# Comando para cargar y ejecutar la imagen del kernel
+setenv bootcmd "fatload mmc 0:1 ${kernel_addr_r} ${bootfile}; bootm ${kernel_addr_r}"
+
+# Guardar la configuración
+saveenv
